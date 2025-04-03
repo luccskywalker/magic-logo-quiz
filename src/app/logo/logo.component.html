@@ -1,0 +1,16 @@
+<button (click)="getRandomCard()">get random card</button>
+<h3>
+  {{ card.name }}
+</h3>
+
+<h4>
+  {{ card.set_name }}
+</h4>
+<div>
+  <img [src]="card.image_uris.large" />
+</div>
+
+<span
+  >Este componente será responsável pela exibição da logo das coleções de
+  magic</span
+>
