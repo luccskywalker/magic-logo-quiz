@@ -1,0 +1,15 @@
+<p>home works!</p>
+<span>{{ length }}</span>
+@for (set of wrongSets; track set.id ) {
+<p>
+  {{ set.name }}
+  {{ set.id }}
+</p>
+<app-option [set]="set"></app-option>
+
+} @if(!!rightSet){
+<app-option [set]="rightSet"></app-option>
+}
+<button (click)="startGame()">Iniciar</button>
+
+<app-logo [setID]="rightSet.id"></app-logo>

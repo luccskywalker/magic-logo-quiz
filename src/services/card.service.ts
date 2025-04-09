@@ -11,6 +11,14 @@ export interface Card {
   };
 }
 
+export interface Set {
+  id: string;
+  name: string;
+  released_at: string;
+  block: string;
+  icon_svg_uri: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -24,5 +32,9 @@ export class CardService {
     return this.httpService.get<Card>(randomCardUrl, {
       params: { filter: 'all' },
     });
+  }
+  public getRandomSet(id: string): Observable<Set> {
+    const randomSetUrl = this.BASE_URL + '/sets';
+    return this.httpService.get<Set>(randomSetUrl);
   }
 }
