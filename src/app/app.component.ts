@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
-  imports: [LogoComponent, QuestionsComponent, HomeComponent],
+  imports: [HomeComponent],
   providers: [HttpClient],
   templateUrl: './app.component.html',
   styleUrl: './app.component.less',

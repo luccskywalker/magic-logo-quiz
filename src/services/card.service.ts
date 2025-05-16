@@ -4,11 +4,16 @@ import { finalize, Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
 export interface Card {
+  id: string;
   name: string;
   set_name: string;
   image_uris: {
     large: string;
   };
+  revealed: boolean;
+}
+export interface Cards {
+  data: Card[];
 }
 
 export interface Set {
@@ -17,6 +22,8 @@ export interface Set {
   released_at: string;
   block: string;
   icon_svg_uri: string;
+  code: string;
+  search_uri: string;
 }
 
 @Injectable({
@@ -33,7 +40,11 @@ export class CardService {
       params: { filter: 'all' },
     });
   }
-  public getRandomSet(id: string): Observable<Set> {
+  public getSet(search_uri: string): Observable<Cards> {
+    return this.httpService.get<Cards>(search_uri);
+  }
+
+  public getAllSets(): Observable<Set> {
     const randomSetUrl = this.BASE_URL + '/sets';
     return this.httpService.get<Set>(randomSetUrl);
   }

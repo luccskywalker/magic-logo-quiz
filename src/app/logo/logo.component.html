@@ -1,16 +1,49 @@
-<button (click)="getRandomCard()">Show Card</button>
-@if(card){
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  "
+  class="logo-container"
+>
+  @if(loading){
+  <p>carregando cartas...</p>
+  }@else{
+  <span>
+    Quantidade de cartas neste set:
+    {{ cardSet.length }} cartas.
+  </span>
+  } @if(setIcon){
+  <div class="logo">
+    <img style="height: 50px; width: 50px" [src]="setIcon" />
+  </div>
+  }
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2%;
+    "
+    class="cards-container"
+  >
+    <!-- @if(cardsToShow.length > 0 ) { @for (card of cardsToShow; track card.id) {
+    @if(card.image_uris){
+    <div style="cursor: pointer" class="image">
+      <img
+        style="object-fit: cover"
+        [src]="card.image_uris.large"
+        loading="lazy"
+      />
+    </div>
 
-<div class="card">
-  <h3>
-    {{ card.name }}
-  </h3>
-
-  <h4>
-    {{ card.set_name }}
-  </h4>
-  <div>
-    <img style="height: 50%; width: 50%" [src]="card.image_uris.large" />
+    }@else{
+    <p>carregando...</p>
+    } } 
+  } -->
+    @if(cardsToShow.length > 0 ) { @for (card of cardsToShow; track card.id) {
+    <app-card [card]="card"></app-card>
+    } }
   </div>
 </div>
-}

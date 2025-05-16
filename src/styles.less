@@ -1,1 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  border: 0;
+  margin: 0;
+}
+
+.btn {
+  --primary-color: rgb(90, 90, 233);
+
+  margin: 1rem;
+  border: 1px solid var(--primary-color);
+  position: relative;
+  color: var(--primary-color);
+  cursor: pointer;
+  background-color: transparent;
+  padding: 1%;
+
+  &.slash {
+    overflow: hidden;
+    transition: 0.3s;
+
+    &::before {
+      position: absolute;
+      content: "";
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      width: 120%;
+      height: 210%;
+      background: var(--primary-color);
+      transform: translate(-50%, -50%) rotate(-45deg) scaleX(0);
+      transition: 0.3s;
+    }
+    &:hover {
+      background: transparent;
+      color: white;
+      &::before {
+        transform: translate(-50%, -50%) rotate(-45deg) scaleX(1);
+      }
+    }
+  }
+  &-pulse {
+    &:active {
+      box-shadow: 0 0 0 18px transparent;
+      animation: pulse 1s;
+    }
+  }
+
+  &-close {
+    transition: 0.3s;
+
+    &:active {
+      background: transparent;
+      box-shadow: inset 54px 0 0 0 var(--primary-color),
+        inset -54px 0 0 0 var(--primary-color);
+    }
+  }
+}
+
+@keyframes pulse {
+  from {
+    box-shadow: 0 0 0 0 var(--primary-color);
+  }
+}

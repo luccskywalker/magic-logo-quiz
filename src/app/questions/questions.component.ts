@@ -7,7 +7,6 @@ import { CardService, Set } from '../../services/card.service';
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.less'],
   standalone: true,
-  imports: [OptionComponent],
 })
 export class QuestionsComponent implements OnInit {
   @Input() setId!: string;

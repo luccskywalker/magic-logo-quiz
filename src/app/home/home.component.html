@@ -1,15 +1,37 @@
-<p>home works!</p>
-<span>{{ length }}</span>
-@for (set of wrongSets; track set.id ) {
-<p>
-  {{ set.name }}
-  {{ set.id }}
-</p>
-<app-option [set]="set"></app-option>
+<div class="home-container">
+  @if(!loading){ @if(hasStartedGame){
+  <div class="answers-container">
+    @for (set of wrongSets; track set.id ) {
+    <div class="wrong-answers">
+      <p>
+        <app-option
+          (answer)="answerRead($event)"
+          [set]="set"
+          [correctOption]="false"
+        ></app-option>
+      </p>
+    </div>
+    }
+    <div class="right-answers">
+      <app-option
+        (answer)="answerRead($event)"
+        [set]="rightSet"
+        [correctOption]="true"
+      ></app-option>
+    </div>
+  </div>
 
-} @if(!!rightSet){
-<app-option [set]="rightSet"></app-option>
-}
-<button (click)="startGame()">Iniciar</button>
-
-<app-logo [setID]="rightSet.id"></app-logo>
+  @if(!!rightSet){
+  <div class="logo-container">
+    <app-logo
+      [searchURI]="rightSet.search_uri"
+      [setIcon]="rightSet.icon_svg_uri"
+      [callCard]="answerEventSubject.asObservable()"
+    ></app-logo>
+  </div>
+  } }@else{
+  <button class="btn slash" (click)="startGame()">Iniciar</button>
+  } }@else{
+  <p>carregando...</p>
+  }
+</div>
