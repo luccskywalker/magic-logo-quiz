@@ -4,6 +4,7 @@ import { JsonPipe } from '@angular/common';
 import { OptionComponent } from '../option/option.component';
 import { LogoComponent } from '../logo/logo.component';
 import { finalize, Subject } from 'rxjs';
+import { CardsZoneComponent } from '../cards-zone/cards-zone.component';
 
 const STANDARD_QUESTIONS_QUANTITY = 5;
 @Component({
@@ -11,7 +12,7 @@ const STANDARD_QUESTIONS_QUANTITY = 5;
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.less'],
   standalone: true,
-  imports: [OptionComponent, LogoComponent],
+  imports: [OptionComponent, LogoComponent, CardsZoneComponent],
 })
 export class HomeComponent implements OnInit {
   constructor(private cardService: CardService) {}

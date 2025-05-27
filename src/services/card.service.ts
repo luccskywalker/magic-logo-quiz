@@ -24,6 +24,7 @@ export interface Set {
   icon_svg_uri: string;
   code: string;
   search_uri: string;
+  card_count: number;
 }
 
 @Injectable({

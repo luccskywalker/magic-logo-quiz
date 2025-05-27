@@ -1,34 +1,38 @@
 <div class="home-container">
-  @if(!loading){ @if(hasStartedGame){
-  <div class="answers-container">
-    @for (set of wrongSets; track set.id ) {
-    <div class="wrong-answers">
-      <p>
+  @if(!loading){ @if(hasStartedGame){ @if(!!rightSet){
+  <div class="top-container" style="display: flex">
+    <div class="logo-container">
+      <span>Today's logo</span>
+      <app-logo
+        [setIcon]="rightSet.icon_svg_uri"
+        [setQuantity]="this.rightSet.card_count"
+      ></app-logo>
+    </div>
+    <div class="answers-container">
+      @for (set of wrongSets; track set.id ) {
+      <div class="wrong-answers">
+        <p>
+          <app-option
+            (answer)="answerRead($event)"
+            [set]="set"
+            [correctOption]="false"
+          ></app-option>
+        </p>
+      </div>
+      }
+      <div class="right-answers">
         <app-option
           (answer)="answerRead($event)"
-          [set]="set"
-          [correctOption]="false"
+          [set]="rightSet"
+          [correctOption]="true"
         ></app-option>
-      </p>
-    </div>
-    }
-    <div class="right-answers">
-      <app-option
-        (answer)="answerRead($event)"
-        [set]="rightSet"
-        [correctOption]="true"
-      ></app-option>
+      </div>
     </div>
   </div>
-
-  @if(!!rightSet){
-  <div class="logo-container">
-    <app-logo
-      [searchURI]="rightSet.search_uri"
-      [setIcon]="rightSet.icon_svg_uri"
-      [callCard]="answerEventSubject.asObservable()"
-    ></app-logo>
-  </div>
+  <app-cards-zone
+    [searchURI]="rightSet.search_uri"
+    [callCard]="answerEventSubject.asObservable()"
+  ></app-cards-zone>
   } }@else{
   <button class="btn slash" (click)="startGame()">Iniciar</button>
   } }@else{

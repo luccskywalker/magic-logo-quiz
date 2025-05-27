@@ -1,49 +1,9 @@
-<div
-  style="
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  "
-  class="logo-container"
->
-  @if(loading){
-  <p>carregando cartas...</p>
-  }@else{
-  <span>
-    Quantidade de cartas neste set:
-    {{ cardSet.length }} cartas.
-  </span>
-  } @if(setIcon){
-  <div class="logo">
-    <img style="height: 50px; width: 50px" [src]="setIcon" />
-  </div>
-  }
-  <div
-    style="
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 2%;
-    "
-    class="cards-container"
-  >
-    <!-- @if(cardsToShow.length > 0 ) { @for (card of cardsToShow; track card.id) {
-    @if(card.image_uris){
-    <div style="cursor: pointer" class="image">
-      <img
-        style="object-fit: cover"
-        [src]="card.image_uris.large"
-        loading="lazy"
-      />
-    </div>
-
-    }@else{
-    <p>carregando...</p>
-    } } 
-  } -->
-    @if(cardsToShow.length > 0 ) { @for (card of cardsToShow; track card.id) {
-    <app-card [card]="card"></app-card>
-    } }
-  </div>
+@if(setIcon){
+<div class="logo">
+  <img style="height: 300px; width: 300px" [src]="setIcon" />
 </div>
+<span>
+  Quantidade de cartas neste set:
+  {{ setQuantity }} cartas.
+</span>
+}

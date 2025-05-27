@@ -1,0 +1,26 @@
+<div
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  "
+  class="logo-container"
+>
+  @if(loading){
+  <p>carregando cartas...</p>
+  }@else{ }
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2%;
+    "
+    class="cards-container"
+  >
+    @if(cardsToShow.length > 0 ) { @for (card of cardsToShow; track card.id) {
+    <app-card [card]="card"></app-card>
+    } }
+  </div>
+</div>
